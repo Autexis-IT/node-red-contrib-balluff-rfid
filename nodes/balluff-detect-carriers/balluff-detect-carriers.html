@@ -1,0 +1,76 @@
+<script type="text/javascript">
+    RED.nodes.registerType('balluff-detect-carriers', {
+        category: 'balluff',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            connection: { value: "", type: "balluff-connection" },
+            mode: { value: "live", required: true },
+            scantime: { value: 1000, required: true, validate: RED.validators.number(), type: "number" },
+            datatype: { value: "epc-binary", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+
+        label: function () {
+            return this.name || "balluff-detect-carriers";
+        },
+
+        oneditprepare: function () {
+            const node = this;
+
+            const modeInput = $('#node-input-mode');
+            modeInput.typedInput({
+                types: [
+                    {
+                        value: "mode",
+                        options: [
+                            { value: "live", label: "Live scan" },
+                            { value: "cumulated", label: "Cumulated scan" }
+                        ]
+                    }
+                ]
+            });
+
+            const dataTypeInput = $('#node-input-datatype');
+            dataTypeInput.typedInput({
+                types: [
+                    {
+                        value: "datatype",
+                        options: [
+                            { value: "epc-binary", label: "EPC (binary)" },
+                            { value: "tid-binary", label: "TID (binary)" }
+                        ]
+                    }
+                ]
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="balluff-detect-carriers">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-plug"></i> Scan mode</label>
+        <input type="text" id="node-input-mode">
+    </div>
+    <div class="form-row">
+        <label for="node-input-scantime"><i class="fa fa-plug"></i> Scan time (ms)</label>
+        <input type="text" id="node-input-scantime">
+    </div>
+    <div class="form-row">
+        <label for="node-input-datatype"><i class="fa fa-plug"></i> Data type</label>
+        <input type="text" id="node-input-datatype">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="balluff-detect-carriers">
+    <p></p>
+</script>

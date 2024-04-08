@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('baluff-iolink-cyclic-output', {
+        category: 'balluff',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            connection: { value: "", type: "baluff-connection" },
+            debounce: { value: 200, required: true, validate: RED.validators.number(), type: "number" }
+        },
+        inputs: 1,
+        outputs: 0,
+        // icon: "file.svg",
+        label: function () {
+            return this.name || "baluff-iolink-cyclic-output";
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="baluff-iolink-cyclic-output">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-debounce"><i class="fa fa-plug"></i> Debounce (ms)</label>
+        <input type="text" id="node-input-debounce">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="baluff-iolink-cyclic-output">
+    <p></p>
+</script>

@@ -1,0 +1,27 @@
+{
+    "version": "0.0.1",
+    "name": "@autexis/node-red-contrib-balluff-rfid",
+    "keywords": [ "node-red" ],
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "node-red": {
+        "version": ">=2.0.0",
+        "nodes": {
+            "balluff-connnection": "nodes/balluff-connection/balluff-connection.js",
+            "balluff-detect-carriers": "nodes/balluff-detect-carriers/balluff-detect-carriers.js",
+            "balluff-scan-carriers": "nodes/balluff-scan-carriers/balluff-scan-carriers.js",
+            "balluff-digital-input": "nodes/balluff-digital-input/balluff-digital-input.js",
+            "balluff-iolink-cyclic-output": "nodes/balluff-iolink-cyclic-output/balluff-iolink-cyclic-output.js",
+            "epc-gs1": "nodes/epc-gs1/epc-gs1.js"
+        }
+    },
+    "dependencies": {
+        "@autexis/balluff-rfid": "0.0.2"
+    },
+    "main": "index.js",
+    "repository": "https://github.com/Autexis-IT/node-red-contrib-balluff-rfid.git",
+    "author": "Autexis IT <info@autexis.com>",
+    "license": "MIT",
+    "private": false
+}

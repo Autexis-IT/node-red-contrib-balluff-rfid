@@ -1,0 +1,73 @@
+<script type="text/javascript">
+    RED.nodes.registerType('baluff-scan-carriers', {
+        category: 'balluff',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            connection: { value: "", type: "baluff-connection" },
+            datatype: { value: "epc-binary", required: true },
+            emittagsonlyonce: { value: true, required: true, type: "boolean" },
+            emitemptylist: { value: false, required: true, type: "boolean" },
+            maxcarriersperreq: { value: 999, required: true, validate: RED.validators.number(), type: "number" },
+            pollintervalms: { value: 100, required: true, validate: RED.validators.number(), type: "number" }
+        },
+        inputs: 1,
+        outputs: 1,
+
+        label: function () {
+            return this.name || "baluff-scan-carriers";
+        },
+
+        oneditprepare: function () {
+            const node = this;
+
+            const dataTypeInput = $('#node-input-datatype');
+            dataTypeInput.typedInput({
+                types: [
+                    {
+                        value: "datatype",
+                        options: [
+                            { value: "epc-binary", label: "EPC (binary)" },
+                            { value: "tid-binary", label: "TID (binary)" }
+                        ]
+                    }
+                ]
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="baluff-scan-carriers">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-datatype"><i class="fa fa-plug"></i> Data type</label>
+        <input type="text" id="node-input-datatype">
+    </div>
+    <div class="form-row">
+        <label for="node-input-emittagsonlyonce"><i class="fa fa-plug"></i> Emit tags only once</label>
+        <input type="checkbox" id="node-input-emittagsonlyonce">
+    </div>
+    <div class="form-row">
+        <label for="node-input-emitemptylist"><i class="fa fa-plug"></i> Emit empty list</label>
+        <input type="checkbox" id="node-input-emitemptylist">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxcarriersperreq"><i class="fa fa-plug"></i> Max carriers per request</label>
+        <input type="text" id="node-input-maxcarriersperreq">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pollintervalms"><i class="fa fa-plug"></i> Poll interval (ms)</label>
+        <input type="text" id="node-input-pollintervalms">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="baluff-scan-carriers">
+    <p></p>
+</script>
