@@ -1,10 +1,10 @@
-const baluffRfid = require("balluff-rfid");
+const balluffRfid = require("@autexis/balluff-rfid");
 
 module.exports = function (RED) {
 
-    function BaluffConnection(config) {
+    function BalluffConnection(config) {
         RED.nodes.createNode(this, config);
-        
+
         const node = this;
 
         node.host = config.host;
@@ -43,10 +43,10 @@ module.exports = function (RED) {
         let lastError = undefined;
         let closed = false;
         let reconnectTimeoutHandle = undefined;
-        let registeredBaluffNodes = [];
+        let registeredBalluffNodes = [];
 
         const emitStateChange = ({ connecting, connection, error }) => {
-            registeredBaluffNodes.forEach((node) => {
+            registeredBalluffNodes.forEach((node) => {
                 try {
                     node.onStateChange({ connecting, connection, error });
                 } catch (ex) {
@@ -67,7 +67,7 @@ module.exports = function (RED) {
             connecting = true;
             maybeEmitStateChange();
 
-            const newConn = baluffRfid.connect({
+            const newConn = balluffRfid.connect({
                 ipAddress: node.host,
                 port: node.port,
 
@@ -115,18 +115,18 @@ module.exports = function (RED) {
 
         maybeConnect();
 
-        node.registerBaluffNode = ({ onStateChange }) => {
-            const baluffNode = {
+        node.registerBalluffNode = ({ onStateChange }) => {
+            const balluffNode = {
                 onStateChange
             };
 
-            registeredBaluffNodes = [
-                ...registeredBaluffNodes,
-                baluffNode
+            registeredBalluffNodes = [
+                ...registeredBalluffNodes,
+                balluffNode
             ];
 
             const close = () => {
-                registeredBaluffNodes = registeredBaluffNodes.filter((n) => n !== baluffNode);
+                registeredBalluffNodes = registeredBalluffNodes.filter((n) => n !== balluffNode);
             };
 
             return {
@@ -149,5 +149,5 @@ module.exports = function (RED) {
         });
     }
 
-    RED.nodes.registerType("baluff-connection", BaluffConnection);
+    RED.nodes.registerType("balluff-connection", BalluffConnection);
 }

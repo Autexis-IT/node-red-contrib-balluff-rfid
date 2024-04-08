@@ -1,6 +1,6 @@
 # Node-RED Contribution Balluff RFID
 
-This is a Node-RED contribution for the Balluff SmartLight.
+This is a Node-RED contribution for the Balluff RFID scanner.
 
 ## Work in progress!
 

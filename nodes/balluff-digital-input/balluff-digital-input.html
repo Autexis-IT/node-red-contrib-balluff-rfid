@@ -1,0 +1,83 @@
+<script type="text/javascript">
+    RED.nodes.registerType('balluff-digital-input', {
+        category: 'balluff',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            connection: { value: "", type: "balluff-connection" },
+            pin: { value: 2, required: true, validate: RED.validators.number(), type: "number" },
+            wiring: { value: "normally-open", required: true },
+            events: { value: "change", required: true },
+            poll: { value: 1000, required: true, validate: RED.validators.number(), type: "number" }
+        },
+        inputs: 0,
+        outputs: 1,
+        // icon: "file.svg",
+        label: function () {
+            return this.name || "balluff-digital-input";
+        },
+
+        oneditprepare: function () {
+            const node = this;
+
+            const wiringInput = $('#node-input-wiring');
+            wiringInput.typedInput({
+                types: [
+                    {
+                        value: "wiring",
+                        options: [
+                            { value: "normally-open", label: "Normally open" },
+                            { value: "normally-closed", label: "Normally closed" }
+                        ]
+                    }
+                ]
+            });
+
+            const eventsInput = $('#node-input-events');
+            eventsInput.typedInput({
+                types: [
+                    {
+                        value: "events",
+                        options: [
+                            { value: "change", label: "on change" },
+                            { value: "read", label: "on read" },
+                            { value: "rising-edge", label: "on rising edge" },
+                            { value: "falling-edge", label: "on falling edge" }
+                        ]
+                    }
+                ]
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="balluff-digital-input">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pin"><i class="fa fa-plug"></i> Pin number</label>
+        <input type="text" id="node-input-pin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-wiring"><i class="fa fa-plug"></i> Input wiring</label>
+        <input type="text" id="node-input-wiring">
+    </div>
+    <div class="form-row">
+        <label for="node-input-events"><i class="fa fa-plug"></i> Fire events</label>
+        <input type="text" id="node-input-events">
+    </div>
+    <div class="form-row">
+        <label for="node-input-poll"><i class="fa fa-plug"></i> Poll interval (ms)</label>
+        <input type="text" id="node-input-poll">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="balluff-digital-input">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

@@ -2,7 +2,14 @@
 # yarn lockfile v1
 
 
-"@autexis/balluff-rfid@0.0.1":
+"@autexis/balluff-007-protocol@0.0.1":
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@autexis/balluff-rfid/-/balluff-rfid-0.0.1.tgz#14ee046e4250db35463545c9c1982da2dcc1e323"
-  integrity sha512-tsrT+2/VLShwB5bShsCMC7xMXP5ca91f9nW78TK9g5Mcol89ddzo4L/lM7wZaPgEi57fLbVXaoruOnMcgMYBoA==
+  resolved "https://registry.yarnpkg.com/@autexis/balluff-007-protocol/-/balluff-007-protocol-0.0.1.tgz#4a42f40b977e4f5f25bb184d0321936149313eaa"
+  integrity sha512-J1RCoRGDIF7Y2WGV4wqNkR6FcTYKe0lgjFE9mSkXC0z6eDNNk9X275GcXZYLFTqciu81/RfYBfVbf1Lm8wMVGg==
+
+"@autexis/balluff-rfid@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@autexis/balluff-rfid/-/balluff-rfid-0.0.2.tgz#f0561a1df484d2a4d7ae7c483ff95ca76ab18eb8"
+  integrity sha512-7BEX3OT6gVFUPSsRG0p5v30wnfKhYSD8TXt1jnhZn56U3e2EzK5WlT83WHK7tZwUPXxn+oe3JI39HaibSKxoWw==
+  dependencies:
+    "@autexis/balluff-007-protocol" "0.0.1"
