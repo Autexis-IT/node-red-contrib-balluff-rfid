@@ -62,6 +62,7 @@ module.exports = function (RED) {
                 const grai = convertEpcToGrai({ epc });
 
                 return {
+                    epc,
                     grai,
                     ...otherProps
                 };
