@@ -17,7 +17,7 @@
         }
     },
     "dependencies": {
-        "@autexis/balluff-rfid": "0.0.2"
+        "@autexis/balluff-rfid": "0.1.1"
     },
     "main": "index.js",
     "repository": "https://github.com/Autexis-IT/node-red-contrib-balluff-rfid.git",
