@@ -8,6 +8,8 @@
 
             iolinkvendorid: { value: 0, required: true, validate: RED.validators.number() },
             iolinkdeviceid: { value: 0, required: true, validate: RED.validators.number() },
+            iolinkoutputlength: { value: 0, required: true, validate: RED.validators.number() },
+            iolinkinputlength: { value: 0, required: true, validate: RED.validators.number() },
         },
 
         label: function () {
@@ -32,5 +34,13 @@
     <div class="form-row">
         <label for="node-config-input-iolinkdeviceid"><i class="fa fa-plug"></i> IO Link Device ID</label>
         <input type="text" id="node-config-input-iolinkdeviceid">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-iolinkoutputlength"><i class="fa fa-plug"></i> IO Link Output Length</label>
+        <input type="text" id="node-config-input-iolinkoutputlength">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-iolinkinputlength"><i class="fa fa-plug"></i> IO Link Input Length</label>
+        <input type="text" id="node-config-input-iolinkinputlength">
     </div>
 </script>
