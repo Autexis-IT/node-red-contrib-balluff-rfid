@@ -28,7 +28,6 @@ module.exports = function (RED) {
         let updateStatusIconTimeoutHandle = undefined;
         let notConnectedMessageShown = false;
 
-        const outputLength = 8;
         const busyLedMinDurationMs = 300;
 
         const statusController = createStatusController({
@@ -103,8 +102,8 @@ module.exports = function (RED) {
                 validationMode: 0,
                 vendorId: connectionConfigNode.ioLinkConfig.vendorId,
                 deviceId: connectionConfigNode.ioLinkConfig.deviceId,
-                outputLength,
-                inputLength: 1,
+                outputLength: connectionConfigNode.ioLinkConfig.outputLength,
+                inputLength: connectionConfigNode.ioLinkConfig.inputLength,
             });
         };
 
